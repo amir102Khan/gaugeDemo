@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.Home">
+
+        <!-- Container for PreviewView and other UI elements -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Preview View for camera -->
+            <androidx.camera.view.PreviewView
+                android:id="@+id/previewView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- Overlay Guide -->
+            <LinearLayout
+                android:id="@+id/overlayGuide"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnOpenReporting">
+
+                <!-- Horizontal guide -->
+                <View
+                    android:layout_width="200dp"
+                    android:layout_height="2dp"
+                    android:background="@color/red" />
+
+                <!-- Vertical guide -->
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="200dp"
+                    android:background="@color/red" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- Switch for Dark Mode -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/themeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:checked="false"
+            android:text="Dark Mode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Buttons for actions -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOpenReadings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Open Readings"
+            android:textAllCaps="false"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toStartOf="@id/btnOpenReporting"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/themeSwitch" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOpenReporting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:text="Open Reports"
+            android:textAllCaps="false"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnOpenReadings"
+            app:layout_constraintTop_toTopOf="@id/btnOpenReadings" />
+
+        <!-- Capture Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/captureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Capture"
+            android:textAllCaps="false"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Loader view for progress -->
+        <RelativeLayout
+            android:id="@+id/loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:elevation="10dp"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop" />
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="Ai processing"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!-- <androidx.constraintlayout.widget.ConstraintLayout
+         android:id="@+id/main"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         tools:context=".ui.Home">
+
+         <com.google.android.material.switchmaterial.SwitchMaterial
+             android:id="@+id/themeSwitch"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_marginTop="40dp"
+             android:checked="false"
+             android:text="Dark Mode"
+             app:layout_constraintStart_toStartOf="@id/btnOpenReadings"
+             app:layout_constraintTop_toTopOf="parent" />
+
+         <com.google.android.material.button.MaterialButton
+             android:id="@+id/btnOpenReadings"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="15dp"
+             android:layout_marginTop="10dp"
+             android:text="Open Readings"
+             android:textAllCaps="false"
+             app:cornerRadius="10dp"
+             app:layout_constraintEnd_toStartOf="@id/btnOpenReporting"
+             app:layout_constraintHorizontal_chainStyle="spread_inside"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@id/themeSwitch" />
+
+         <com.google.android.material.button.MaterialButton
+             android:id="@+id/btnOpenReporting"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="10dp"
+             android:layout_marginEnd="15dp"
+             android:text="Open Reports"
+             android:textAllCaps="false"
+             app:cornerRadius="10dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toEndOf="@id/btnOpenReadings"
+             app:layout_constraintTop_toTopOf="@id/btnOpenReadings" />
+
+
+         <androidx.camera.view.PreviewView
+             android:id="@+id/previewView"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" />
+
+         &lt;!&ndash; Overlay Guide &ndash;&gt;
+         <LinearLayout
+             android:id="@+id/overlayGuide"
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:elevation="10dp"
+             android:gravity="center"
+             android:orientation="vertical"
+             android:visibility="visible"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintTop_toBottomOf="@id/btnOpenReporting">
+
+             &lt;!&ndash; Horizontal guide &ndash;&gt;
+             <View
+                 android:layout_width="200dp"
+                 android:layout_height="2dp"
+                 android:background="@color/red" />
+
+             &lt;!&ndash; Vertical guide &ndash;&gt;
+             <View
+                 android:layout_width="2dp"
+                 android:layout_height="200dp"
+                 android:background="@color/red" />
+         </LinearLayout>
+
+         <com.google.android.material.button.MaterialButton
+             android:id="@+id/captureButton"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="16dp"
+             android:text="Capture"
+             android:textAllCaps="false"
+             app:cornerRadius="10dp"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent" />
+
+
+         <RelativeLayout
+             android:id="@+id/loader"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/transparent"
+             android:clickable="true"
+             android:elevation="10dp"
+             android:focusable="true"
+             android:visibility="gone">
+
+             <ProgressBar
+                 android:id="@+id/progress"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:indeterminate="true"
+                 android:indeterminateTintMode="src_atop" />
+
+
+             <TextView
+                 android:id="@+id/tv_message"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@id/progress"
+                 android:layout_centerHorizontal="true"
+                 android:layout_marginStart="10dp"
+                 android:layout_marginTop="10dp"
+                 android:layout_marginEnd="10dp"
+                 android:gravity="center"
+                 android:text="Ai processing"
+                 android:textColor="@color/white"
+                 android:textSize="14dp" />
+         </RelativeLayout>
+     </androidx.constraintlayout.widget.ConstraintLayout>-->
+</layout>
