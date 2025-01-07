@@ -52,7 +52,6 @@
             tools:listitem="@layout/item_readings" />
 
 
-        <!-- Button to simulate syncing data to the server -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/syncButton"
             style="@style/Widget.MaterialComponents.Button"
